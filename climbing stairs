@@ -1,0 +1,15 @@
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        if n <= 2:
+            return n
+        
+        # Initialize variables to store the number of ways to reach each step
+        prev1 = 1  # Number of ways to reach the first step
+        prev2 = 2  # Number of ways to reach the second step
+        
+        # Calculate the number of ways to reach each step from the previous steps
+        for _ in range(3, n + 1):
+            current = prev1 + prev2  # Number of ways to reach the current step
+            prev1, prev2 = prev2, current  # Update variables for next iteration
+        
+        return prev2  # Return the number of ways to reach the last step
